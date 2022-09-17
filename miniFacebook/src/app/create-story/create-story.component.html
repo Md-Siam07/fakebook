@@ -1,0 +1,31 @@
+<br><br><br>
+<br><br><br>
+
+<button class="container" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <p align="center" data-visualcompletion="css-img" class="i09qtzwb n7fi1qx3 pmk7jnqg j9ispegn kr520xx4" style="background-image: url('https://static.xx.fbcdn.net/rsrc.php/v3/y_/r/OOIYgLUa58d.png?_nc_eui2=AeG0U-8TPjVMWkptDnnKMau26zHksStX14frMeSxK1fXhxqFGKL6tLBYSiV6YWJd-fc2iWqgWZ7FAuZI9Z2KpKga'); background-position: 0px 0px; background-size: 221px 687px; width: 220px; height: 330px; background-repeat: no-repeat; display: inline-block;">
+        <img src="../../assets/photo.svg" alt="" height="50" width="50" class="center" style="margin-top: 100px;">
+        <b style="color: white;"><span class="caption">Create Story</span></b>
+    </p> 
+    
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="file" id="story" name="story" (change)="uploadFile($event)">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="post()" data-bs-dismiss="modal">Post</button>
+      </div>
+    </div>
+  </div>
+</div>

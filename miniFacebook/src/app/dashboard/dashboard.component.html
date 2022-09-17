@@ -1,0 +1,146 @@
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+    
+    <div class="middle-panel">
+
+        <div class="story-section">
+
+            <div class="story create" data-toggle="modal" data-target="#exampleModal" (click)="createStory()">
+                <div class="dp-image">
+                    <!-- <img src="../../assets/images/" -->
+                    <img src="../../assets/images/dp.jpg" alt="Profile pic">
+                </div>
+                <span class="dp-container">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="name">Create Story</span>
+            </div>
+
+
+            <div *ngFor="let url of filesURLs; let i=index">
+                <div class="story">
+                    <img src={{url}} alt="Anuska's story">
+                    <div class="dp-container">
+                        <img src="../../assets/images/model.jpg" alt="">
+                    </div>
+                    <p class="name">{{storyList[i].fullName}}</p>
+                </div>
+            </div>
+
+            <!-- <div class="story">
+                <img src="../../assets/images/boy.jpg" alt="Story image">
+                <span class="dp-container">
+                    <img src="../../assets/images//dp.jpg" alt="Profile pic">
+                </span>
+                <span class="name">Gaurav Gall</span>
+            </div>
+
+            <div class="story">
+                <img src="../../assets/images/mountains.jpg" alt="Story image">
+                <span class="dp-container">
+                    <img src="../../assets/images/boy.jpg" alt="Profile pic">
+                </span>
+                <span class="name">Priyank Saksena</span>
+            </div>
+
+            <div class="story">
+                <img src="../../assets/images/shoes.jpg" alt="Story image">
+                <span class="dp-container">
+                    <img src="../../assets/images/model.jpg" alt="Profile pic">
+                </span>
+                <span class="name">Pragati Adhikari</span>
+            </div> -->
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        <div class="post create">
+            <div class="post-top">
+                <div class="dp">
+                    <img src="../../assets/images/dp.jpg" alt="">
+                </div>
+                <textarea type="text" placeholder="What's on your mind, {{userInfo.fullName}} ?" [(ngModel)]="statusText" [ngModelOptions]="{standalone: true}"> </textarea>
+                
+            </div>
+            
+            <div class="post-bottom">
+                
+                <div class="action">
+                    <i><img src="https://img.icons8.com/color/25/000000/video-call--v1.png"/></i>
+                    <span>Live video</span>
+                </div>
+                <div class="action">
+                    <i><img src="https://img.icons8.com/office/25/000000/stack-of-photos--v1.png"/></i>
+                    <span>Photo/Video</span>
+                </div>
+                <div class="action">
+                    <i><img src="https://img.icons8.com/color-glass/25/000000/happy.png"/></i>
+                    <span>Feeling/Activity</span>
+                </div>
+                
+                <div class="action" *ngIf="statusText.length>0">
+                    <button (click)="createPost()"><i><img src="https://img.icons8.com/external-bearicons-gradient-bearicons/25/000000/external-Post-social-media-bearicons-gradient-bearicons.png"/></i></button>
+                    <span>Post</span>
+                </div>
+            </div>
+        </div>
+
+        <div *ngFor="let status of statusList">
+            <div class="post">
+                <div class="post-top">
+                    <div class="dp">
+                        <img src="../../assets/images/dp.jpg" alt="">
+                    </div>
+                    <div class="post-info">
+                        <p class="name">{{status.fullName}}</p>
+                        <span class="time">{{remainingTime(status.time)}} mins ago</span>
+                    </div>
+                    <i><img src="https://img.icons8.com/fluency-systems-regular/25/000000/dots-loading--v1.png"/></i>
+                </div>
+    
+                <div class="post-content">
+                    <div style="white-space: pre-line">{{newLineFormat(status.status)}}</div>
+                </div>
+                
+                <div class="post-bottom">
+                    <div class="action">
+                        <i> <img src="https://img.icons8.com/stickers/100/000000/facebook-like-skin-type-1.png" height="25" width="25"></i>
+                        <span>Like</span>
+                    </div>
+                    <div class="action">
+                        <i><img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-comment-influencer-marketing-flaticons-lineal-color-flat-icons.png" height="25" width="25"/></i>
+                        <span>Comment</span>
+                    </div>
+                    <div class="action">
+                        <!-- <i><img src="https://img.icons8.com/plasticine/35/000000/share.png"/></i> -->
+                        <i><img src="../../assets/images/download.png" height="20" width="20"/></i>
+                        <span>Share</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>

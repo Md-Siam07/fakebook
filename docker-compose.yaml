@@ -1,0 +1,65 @@
+version: "3.9"
+services:
+  nginx:
+    image: mdsiam07/frontend
+    restart: unless-stopped
+    ports:
+      - 80:80
+    depends_on:
+      - account-service
+      - status-service
+      - story-service
+  db-account:
+    image: mongo:4.0-xenial
+    volumes:
+      - account:/data/db
+  db-status:
+    image: mongo:4.0-xenial
+    volumes:
+      - status:/data/db
+  db-story:
+    image: mongo:4.0-xenial
+    volumes:
+      - storynew:/data/db
+
+  storyobjectdb:
+    image: minio/minio:latest
+    environment:
+      - MINIO_ROOT_USER=azKKrsU1mp8SGjFd
+      - MINIO_ROOT_PASSWORD=tA4wjE451fk1jhpXhIZDcfBBU6iBDHRU
+    command: server --address 0.0.0.0:9000 /data --console-address ":9001"
+    volumes:
+      - object:/data
+
+  account-service:
+    image: mdsiam07/accountservice
+    restart: unless-stopped
+    depends_on:
+      - db-account
+    environment:
+      DB_URL: mongodb://db-account/AccountDatabase
+
+  status-service:
+    image: mdsiam07/statusservice
+    restart: unless-stopped
+    depends_on:
+      - account-service
+      - db-status
+    environment:
+      DB_URL: mongodb://db-status/StatusDatabase
+  story-service:
+    image: mdsiam07/storyservice
+    restart: unless-stopped
+    depends_on:
+      - db-story
+      - account-service
+      - storyobjectdb
+    environment:
+      DB_URL: mongodb://db-story/StoryDatabases
+  
+  
+volumes:
+  status:
+  account:
+  object:
+  storynew:
